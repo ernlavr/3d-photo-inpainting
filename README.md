@@ -24,35 +24,35 @@ In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020.
 - This branch includes a `environment.yml` file to help with repo installation on Windows 10 
 - [Cuda Support](https://github.com/vt-vl-lab/3d-photo-inpainting/pull/30)
 - no need to specify file type - `.png` and `.jpg` will work automagicly
-- [MiDaS](https://github.com/intel-isl/MiDaS/releases/tag/v1) upgraded to [MiDaS v2](https://github.com/intel-isl/MiDaS/releases/tag/v2)
-- **MiDaS:** ![](MiDaS.gif)
-- **MiDaS v2:** ![](MiDaS-v2.gif)
+- Uses **MiDaS:** ![](MiDaS.gif)
 
 ## Prerequisites
 
-- Linux (tested on Ubuntu 18.04.4 LTS) or Windows 10
+- Windows 10
 - Anaconda
 - Python 3.7 (tested on 3.7.4)
 - PyTorch 1.4.0 (tested on 1.4.0 for execution)
 
 and the Python dependencies listed in [requirements.txt](requirements.txt)
 - To get started, please run the following commands:
-**Linux**
-    ```bash
-    conda create -n 3DP python=3.7 anaconda
-    conda activate 3DP
-    pip install -r requirements.txt
-    conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit==10.1.243 -c pytorch
-    ```
+
     **Windows 10**
     ```bash
    conda env create --file environment.yml
     ```
-- Next, please download the model weight using the following command:
+- Next, please download the model weight using the provided shell script. You can use `git bash` to run it but you'll need to add `wget` tool to your `git` installation.
+  
+  1. Download the `wget` executable, i.e. https://eternallybored.org/misc/wget/
+  2. Put the `wget` in your `git bash` `/bin/` folder, default folder would is\
+  `C:\Program Files\Git\mingw64\bin`
+  3. Run the following commands on the shell script provided in this repository
     ```bash
     chmod +x download.sh
     ./download.sh
     ```    
+
+    For **Linux**
+    Please see the original repository
 
 ## Quick start
 Please follow the instructions in this section. 
