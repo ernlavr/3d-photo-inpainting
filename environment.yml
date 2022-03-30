@@ -3,6 +3,7 @@ channels:
   - anaconda
   - menpo
   - conda-forge
+  - conda-forge/label/broken
   - pytorch
   - open3d-admin
   - defaults
