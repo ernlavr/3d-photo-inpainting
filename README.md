@@ -45,7 +45,7 @@ and the Python dependencies listed in [requirements.txt](requirements.txt)
   1. Download the `wget` executable, i.e. https://eternallybored.org/misc/wget/
   2. Put the `wget` in your `git bash` `/bin/` folder, default folder would is\
   `C:\Program Files\Git\mingw64\bin`
-  3. Run the following commands on the shell script provided in this repository
+  3. Run the following commands from your `git bash` terminal on the shell script provided in this repository
     ```bash
     chmod +x download.sh
     ./download.sh
