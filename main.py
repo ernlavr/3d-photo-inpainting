@@ -21,6 +21,12 @@ from MiDaS.run import run_depth
 from MiDaS.monodepth_net import MonoDepthNet
 import MiDaS.MiDaS_utils as MiDaS_utils
 from bilateral_filtering import sparse_bilateral_filtering
+import shutil
+
+# Clear output dir
+if(os.path.exists('output')):
+    shutil.rmtree('output')
+os.makedirs('output')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', type=str, default='argument.yml',help='Configure of post processing')
@@ -45,6 +51,7 @@ print(f"running on device {device}")
 for idx in tqdm(range(len(sample_list_jpg))):
     depth = None
     sample = sample_list_jpg[idx]
+    config['currimgname'] = sample['ref_img_fi'].replace("image\\", "output/rend_")
     print("Current Source ==> ", sample['src_pair_name'])
     mesh_fi = os.path.join(config['mesh_folder'], sample['src_pair_name'] +'.ply')
     image = imageio.imread(sample['ref_img_fi'])

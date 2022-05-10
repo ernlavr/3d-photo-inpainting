@@ -2286,10 +2286,31 @@ def output_3d_photo(verts, colors, faces, Height, Width, hFov, vFov, tgt_poses, 
         for stereo in stereos:
             crop_stereos.append((stereo[atop:abuttom, aleft:aright, :3] * 1).astype(np.uint8))
             stereos = crop_stereos
-        clip = ImageSequenceClip(stereos, fps=config['fps'])
-        if isinstance(video_basename, list):
-            video_basename = video_basename[0]
-        clip.write_videofile(os.path.join(output_dir, video_basename + '_' + video_traj_type + '.mp4'), fps=config['fps'])
+        # Write stereos to disk
+        if (config['writetoimg'] == True):
+            for img in stereos:
+
+                # loop to iterating characters
+                currImgName = config['currimgname']
+                temp = 0
+                outputDir = None
+                for chr in currImgName:
+                    if chr.isdigit() or chr == '.':
+                        temp = currImgName.index(chr)
+                        outputDir = currImgName[0: temp]
+                        break
+                if(os.path.exists(outputDir) is False):
+                    os.mkdir(outputDir)
+
+                outputPath = currImgName.replace("output", outputDir)
+                cv2.imwrite(outputPath, img)
+
+
+        else:
+            clip = ImageSequenceClip(stereos, fps=config['fps'])
+            if isinstance(video_basename, list):
+                video_basename = video_basename[0]
+            clip.write_videofile(os.path.join(output_dir, video_basename + '_' + video_traj_type + '.mp4'), fps=config['fps'])
 
 
 
