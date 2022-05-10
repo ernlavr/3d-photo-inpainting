@@ -8,7 +8,6 @@ channels:
   - open3d-admin
   - defaults
 dependencies:
-  - _anaconda_depends=2020.02=py37_0
   - alabaster=0.7.12=py_0
   - anaconda=custom=py37_1
   - anaconda-client=1.7.2=py_0
